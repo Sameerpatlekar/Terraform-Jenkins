@@ -52,6 +52,17 @@ pipeline {
                 sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
             }
         }
+        stage('create inventory file') {
+            steps {
+                sh "pwd;cd terraform/ ; terraform output -raw public_ip > inventory.ini"
+            }
+        }
+
+        stage('ping server') {
+            steps {
+               sh 'ansible-playbook -i inventory.ini playbook.yml'
+            }
+        }
     }
 
   }
