@@ -9,3 +9,7 @@ resource "aws_instance" "foo" {
       Name = "TF-Instance"
   }
 }
+
+output "public_ip" {
+   value =  aws_instance.foo.public_ip
+}
