@@ -1,8 +1,4 @@
 pipeline {
-    agent{
-        label 'my-agent-1'
-    }
-
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
     } 
@@ -11,7 +7,9 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-   agent  any
+   agent{
+        label 'my-agent-1'
+    }
     stages {
         stage('checkout') {
             steps {
