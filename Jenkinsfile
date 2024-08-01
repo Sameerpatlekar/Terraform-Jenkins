@@ -1,19 +1,19 @@
 pipeline {
-    parameters {
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    } 
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        ANSIBLE_HOME = tool name: 'ansible', type: 'AnsibleInstallation'
-    }
-   agent{
+    agent{
         label 'my-agent-1'
     }
     tools{
         terraform 'terraform'
         ansible 'ansible'
     }
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        ANSIBLE_HOME = tool name: 'ansible', type: 'AnsibleInstallation'
+    }
+    parameters {
+        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
+    }     
     stages {
         stage('checkout') {
             steps {
