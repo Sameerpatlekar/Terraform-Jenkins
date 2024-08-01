@@ -9,7 +9,6 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        ANSIBLE_HOME = tool name: 'ansible', type: 'AnsibleInstallation'
     }
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
@@ -62,7 +61,6 @@ pipeline {
 
         stage('ping server') {
             steps {
-                sh 'pwd;cd terraform/ ; export PATH=$ANSIBLE_HOME/bin:$PATH'
                sh 'pwd;cd terraform/ ; ansible-playbook -i inventory.ini playbook.yml'
             }
         }
