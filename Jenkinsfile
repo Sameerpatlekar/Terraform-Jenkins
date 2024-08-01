@@ -6,9 +6,11 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
-
    agent{
         label 'my-agent-1'
+    }
+    tools{
+        terraform 'terraform'
     }
     stages {
         stage('checkout') {
