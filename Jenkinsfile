@@ -61,8 +61,7 @@ pipeline {
 
         stage('ping server') {
             steps {
-                sshagent(['ssh-private-key']){
-               sh 'pwd;cd terraform/ ; ansible-playbook -i inventory.ini playbook.yml'
+               ansiblePlaybook credentialsId: 'jenkins_private-ansible', installation: 'ansible', inventory: 'inventory.ini', playbook: 'playbook.yml', vaultTmpPath: ''
                 }
             }
         }
