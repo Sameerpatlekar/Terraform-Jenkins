@@ -5,6 +5,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        ANSIBLE_HOME = tool name: 'ansible', type: 'AnsibleInstallation'
     }
    agent{
         label 'my-agent-1'
