@@ -68,8 +68,12 @@ pipeline {
         }
     }
     post {
-        always {
+        success {
+            echo 'Build was successful, cleaning workspace...'
             cleanWs()
+        }
+        failure {
+            echo 'Build failed, not cleaning workspace.'
         }
     }
   }
