@@ -64,7 +64,6 @@ pipeline {
                ansiblePlaybook credentialsId: 'jenkins_private-ansible', installation: 'ansible', inventory: 'inventory.ini', playbook: 'playbook.yml', vaultTmpPath: ''
                 }
             }
-        }
     }
     post {
         success {
