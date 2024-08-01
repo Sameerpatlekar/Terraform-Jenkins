@@ -61,7 +61,7 @@ pipeline {
 
         stage('ping server') {
             steps {
-               sh 'ansible-playbook -i inventory.ini playbook.yml'
+               sh 'pwd;cd terraform/ ; ansible-playbook -i inventory.ini playbook.yml'
             }
         }
     }
