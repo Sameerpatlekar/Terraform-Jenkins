@@ -55,7 +55,7 @@ pipeline {
         }
         stage('create inventory file') {
             steps {
-                sh "pwd;cd terraform/ ; terraform output -raw public_ip > inventory.ini"
+                sh 'pwd;cd terraform/ ; terraform output -raw public_ip > inventory.ini'
             }
         }
 
