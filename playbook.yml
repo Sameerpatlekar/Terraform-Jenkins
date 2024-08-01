@@ -2,6 +2,7 @@
 - name: Ping all servers
   hosts: all
   gather_facts: no
+  remote_user: root
   tasks:
     - name: Ping the server
-      ansible.builtin.ping:
+      ping:
