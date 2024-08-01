@@ -61,7 +61,9 @@ pipeline {
 
         stage('ping server') {
             steps {
+                sshagent(['ubuntu']){
                sh 'pwd;cd terraform/ ; ansible-playbook -i inventory.ini playbook.yml'
+                }
             }
         }
     }
