@@ -61,7 +61,7 @@ pipeline {
 
         stage('ping server') {
             steps {
-               ansiblePlaybook credentialsId: 'jenkins_private-ansible', installation: 'ansible', inventory: 'inventory.ini', playbook: 'playbook.yml', vaultTmpPath: ''
+               ansiblePlaybook credentialsId: 'jenkins_private-ansible', installation: 'ansible', inventory: 'terraform/inventory.ini', playbook: 'terraform/playbook.yml', vaultTmpPath: ''
                 }
             }
     }
